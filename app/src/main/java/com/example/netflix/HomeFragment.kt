@@ -1,26 +1,26 @@
 package com.example.netflix
 
-import android.app.Activity
+
+import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Button
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.getColor
+import androidx.fragment.app.Fragment
 import com.example.netflix.databinding.FragmentHomeBinding
 import com.google.android.material.button.MaterialButton
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import androidx.navigation.fragment.findNavController
 
 class HomeFragment : Fragment() {
     lateinit var  binding : FragmentHomeBinding
     var arrayOfFavoriteButtons=ArrayList<Button>()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -46,9 +46,43 @@ class HomeFragment : Fragment() {
            button.setOnClickListener {
                (button as MaterialButton).setIconTintResource(R.color.red)
            }
+       }
 
-
-            }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.itemId) {
+            R.id.profileMenu  -> {
+                goToFragment(ProfileFragment())
+                true
+            }
+            R.id.favoriteMenu  -> {
+                goToFragment(FavoriteFragment())
+                true
+            }
+            R.id.comingSoonMenu->{
+                goToFragment(ComingSoonFragment())
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+
+    private fun goToFragment(fragment:Fragment) {
+        var pref2 = activity?.getSharedPreferences("sha",MODE_PRIVATE)
+        if (pref2?.getString("name","").isNullOrBlank()){
+            findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
+        }else {
+            findNavController().navigate(R.id.action_homeFragment_to_comingSoonFragment)
+        }
+    }
+
 
 }

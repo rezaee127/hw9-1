@@ -1,21 +1,20 @@
 package com.example.netflix
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.netflix.databinding.FragmentHomeBinding
 import com.example.netflix.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
 
     lateinit var binding:FragmentProfileBinding
-    val pref:SharedPreferences?=activity?.getSharedPreferences("shared", AppCompatActivity.MODE_PRIVATE)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -37,6 +36,7 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         binding.registerBtn.setOnClickListener {
             if (binding.nameEtx.text.isNullOrBlank())
                 binding.nameEtx.error = "نام را وارد کنید"
@@ -54,7 +54,8 @@ class ProfileFragment : Fragment() {
         val email=binding.emailEtx.text.toString()
         val phone=binding.phoneEtx.text.toString()
         val userName=binding.userNameEtx.text.toString()
-        val editor=pref?.edit()
+        var pref = activity?.getSharedPreferences("sha",Context.MODE_PRIVATE)
+        var editor=pref?.edit()
         editor?.putString("name",name)
         editor?.putString("email",email)
         editor?.putString("phone",phone)

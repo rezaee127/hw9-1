@@ -48,7 +48,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imageView3"
-                android:text="TextView"
+                android:text="Film 3"
                 tools:layout_editor_absoluteX="171dp"
                 tools:layout_editor_absoluteY="78dp" />
 
@@ -88,7 +88,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imageView2"
-                android:text="TextView"
+                android:text="Film 2"
                 tools:layout_editor_absoluteX="171dp"
                 tools:layout_editor_absoluteY="78dp" />
 
@@ -128,7 +128,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imageView1"
-                android:text="TextView"
+                android:text="Film 1"
                 tools:layout_editor_absoluteX="171dp"
                 tools:layout_editor_absoluteY="78dp" />
 
@@ -177,7 +177,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imageView6"
-                android:text="TextView"
+                android:text="Film 6"
                 tools:layout_editor_absoluteX="171dp"
                 tools:layout_editor_absoluteY="78dp" />
 
@@ -217,7 +217,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imageView5"
-                android:text="TextView"
+                android:text="Film 5"
                 tools:layout_editor_absoluteX="171dp"
                 tools:layout_editor_absoluteY="78dp" />
 
@@ -257,7 +257,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imageView4"
-                android:text="TextView"
+                android:text="Film 4"
                 tools:layout_editor_absoluteX="171dp"
                 tools:layout_editor_absoluteY="78dp" />
 
@@ -307,7 +307,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imageView9"
-                android:text="TextView"
+                android:text="Film 9"
                 tools:layout_editor_absoluteX="171dp"
                 tools:layout_editor_absoluteY="78dp" />
 
@@ -348,7 +348,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imageView8"
-                android:text="TextView"
+                android:text="Film 8"
                 tools:layout_editor_absoluteX="171dp"
                 tools:layout_editor_absoluteY="78dp" />
 
@@ -390,7 +390,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imageView7"
-                android:text="TextView"
+                android:text="Film 7"
                 tools:layout_editor_absoluteX="171dp"
                 tools:layout_editor_absoluteY="78dp" />
 
@@ -440,7 +440,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imageView12"
-                android:text="TextView"
+                android:text="Film 12"
                 tools:layout_editor_absoluteX="171dp"
                 tools:layout_editor_absoluteY="78dp" />
 
@@ -482,7 +482,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imageView11"
-                android:text="TextView"
+                android:text="Film 11"
                 tools:layout_editor_absoluteX="171dp"
                 tools:layout_editor_absoluteY="78dp" />
 
@@ -524,7 +524,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imageView10"
-                android:text="TextView"
+                android:text="Film 10"
                 tools:layout_editor_absoluteX="171dp"
                 tools:layout_editor_absoluteY="78dp" />
 
