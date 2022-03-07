@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ProfileFragment">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="15dp"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/name_etx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="40dp"
+        android:hint="نام و نام خانوادگی"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/email_etx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="40dp"
+        android:hint="ایمیل"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/password_etx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="40dp"
+        android:hint="پسورد"
+        android:inputType="number"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/re_type_password_etx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="40dp"
+        android:inputType="number"
+        android:hint="تایپ مجدد پسورد"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/phone_etx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="40dp"
+        android:inputType="number"
+        android:hint="تلفن(اختیاری)"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/user_name_etx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="40dp"
+        android:hint="نام کاربری (اختیاری)"
+        android:layout_marginTop="15dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/register_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="register"
+        app:cornerRadius="20dp"
+        android:minHeight="48dp"/>
+
+</LinearLayout>
+
+
+</ScrollView>
