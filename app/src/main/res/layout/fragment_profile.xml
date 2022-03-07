@@ -9,8 +9,21 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="30dp"
     android:layout_margin="15dp"
+
     android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="45dp"
+        android:gravity="center"
+        android:background="@color/purple_100"
+        android:textSize="20sp"
+        android:layout_marginTop="15dp"
+        android:text="فرم ثبت اطلاعات"/>
 
     <EditText
         android:id="@+id/name_etx"
@@ -26,24 +39,6 @@
         android:layout_height="wrap_content"
         android:minHeight="40dp"
         android:hint="ایمیل"
-        android:layout_marginTop="20dp"/>
-
-    <EditText
-        android:id="@+id/password_etx"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="40dp"
-        android:hint="پسورد"
-        android:inputType="number"
-        android:layout_marginTop="20dp"/>
-
-    <EditText
-        android:id="@+id/re_type_password_etx"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="40dp"
-        android:inputType="number"
-        android:hint="تایپ مجدد پسورد"
         android:layout_marginTop="20dp"/>
 
     <EditText
@@ -68,9 +63,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="register"
+        android:text="ثبت اطلاعات"
+        android:textSize="20sp"
         app:cornerRadius="20dp"
-        android:minHeight="48dp"/>
+        android:minHeight="53dp"/>
 
 </LinearLayout>
 
