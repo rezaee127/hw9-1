@@ -35,7 +35,10 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        var pref = activity?.getSharedPreferences("sha",Context.MODE_PRIVATE)
+        if (pref?.getString("name","").isNullOrBlank()){
+            TODO()
+        }
 
         binding.registerBtn.setOnClickListener {
             if (binding.nameEtx.text.isNullOrBlank())

@@ -59,23 +59,36 @@ class HomeFragment : Fragment() {
         // Handle item selection
         return when (item.itemId) {
             R.id.profileMenu  -> {
-                goToFragment(ProfileFragment())
+                goToProfileFragment()
                 true
             }
             R.id.favoriteMenu  -> {
-                goToFragment(FavoriteFragment())
+                goToFavoriteFragment()
                 true
             }
             R.id.comingSoonMenu->{
-                goToFragment(ComingSoonFragment())
+                goToComingSoonFragment()
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
     }
 
+    private fun goToProfileFragment() {
+        findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
+    }
 
-    private fun goToFragment(fragment:Fragment) {
+    private fun goToFavoriteFragment() {
+        var pref2 = activity?.getSharedPreferences("sha",MODE_PRIVATE)
+        if (pref2?.getString("name","").isNullOrBlank()){
+            findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
+        }else {
+            findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)
+        }
+    }
+
+
+    private fun goToComingSoonFragment() {
         var pref2 = activity?.getSharedPreferences("sha",MODE_PRIVATE)
         if (pref2?.getString("name","").isNullOrBlank()){
             findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
