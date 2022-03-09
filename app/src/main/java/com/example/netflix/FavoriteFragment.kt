@@ -8,13 +8,10 @@ import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.example.netflix.databinding.FragmentFavoriteBinding
-import com.google.android.material.button.MaterialButton
 
 
 class FavoriteFragment : Fragment() {
     lateinit var  binding : FragmentFavoriteBinding
-    val arrayOfLiked=ArrayList<ConstraintLayout>()
-    val array=ArrayList<Int>()
 
     var pref = activity?.getSharedPreferences("sha", Context.MODE_PRIVATE)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,54 +35,30 @@ class FavoriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activity?.title="Favorites"
-        var id=-1
-        if ((requireArguments().getInt("liked"))!= -1){
-            id=requireArguments().getInt("liked")
-        }
+        val arrayOfTextViews= arrayOf(binding.textView1,binding.textView2,binding.textView3,
+            binding.textView4,binding.textView5,binding.textView6,binding.textView7,
+            binding.textView8,binding.textView9,binding.textView10,binding.textView11,binding.textView12)
 
-        val arrayOfConstraintLayouts= arrayListOf(binding.const1,binding.const2,binding.const3,
-            binding.const4,binding.const5,binding.const6,binding.const7,binding.const8,
-            binding.const9,binding.const10,binding.const11,binding.const12)
-        for (const in arrayOfConstraintLayouts){
-            const.visibility=View.GONE
-        }
+        val arrayOfImagView= arrayOf(binding.imageView1,binding.imageView2,binding.imageView3,
+            binding.imageView4,binding.imageView5,binding.imageView6,binding.imageView7,
+            binding.imageView8,binding.imageView9,binding.imageView10,
+            binding.imageView11,binding.imageView12,)
+
+        val arrayOfPictures= arrayOf(R.drawable.avatar_1,R.drawable.avatar_2,R.drawable.avatar_3,
+            R.drawable.avatar_4,R.drawable.avatar_5,R.drawable.avatar_6,R.drawable.avatar_7,
+            R.drawable.avatar_8,R.drawable.avatar_9,R.drawable.avatar_10,R.drawable.avatar_11,
+            R.drawable.avatar_12)
 
 
-        var s=pref?.getString("list","")
-        val listOfIndex= s?.split(",")
-
-        if (listOfIndex != null) {
-            for (k in listOfIndex){
-                if(k!="") {
-                    var j = k.toInt()
-                    array.add(j)
-                }
+        for (i in favorite.arrayOfTitle.indices){
+            if (favorite.arrayOfTitle[i]!=""){
+                arrayOfTextViews[favorite.count].text=favorite.arrayOfTitle[i]
+                arrayOfImagView[favorite.count].setImageResource(arrayOfPictures[i])
+                favorite.count++
             }
         }
+        favorite.count=0
 
-        if(id!=-1){
-            array.add(id)
-        }
-        val sb = StringBuilder()
-        for (i in 0 until array.size) {
-            sb.append(array[i]).append(",")
-        }
-
-        val editor= pref?.edit()
-        editor?.putString("list", sb.toString())
-        editor?.apply()
-
-        for(i in array){
-            arrayOfConstraintLayouts[i].visibility=View.VISIBLE
-        }
-
-     /*   arrayOfLiked.add(arrayOfConstraintLayouts[id ])
-        for (const in arrayOfLiked){
-            const.visibility=View.VISIBLE
-        }
-
-
-      */
         
         
 
@@ -107,16 +80,8 @@ class FavoriteFragment : Fragment() {
 
 
 
-       // var y=requireArguments().getInt("number")
-     //   binding.const2.visibility=View.VISIBLE
 
-      /*  var favoriteCount=1
-        if(favoriteCount!=0){
-            binding.imageView2=requireArguments().getInt("image")
-            binding.textView2.text=requireArguments().getString("text")
-        }
 
-       */
 
 
     }

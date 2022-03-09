@@ -12,6 +12,11 @@ import androidx.navigation.fragment.findNavController
 import com.example.netflix.databinding.FragmentHomeBinding
 import com.google.android.material.button.MaterialButton
 
+object favorite{
+    val arrayOfTitle= arrayOf("","","","","","","","","","","","")
+    var count=0
+}
+
 class HomeFragment : Fragment() {
     lateinit var  binding : FragmentHomeBinding
     var arrayOfButtons=ArrayList<Button>()
@@ -43,39 +48,67 @@ class HomeFragment : Fragment() {
             binding.button4,binding.button5,binding.button6,binding.button7,binding.button8,
             binding.button9,binding.button10,binding.button11,binding.button12)
 
-        arrayOfConstraintLayout= arrayListOf(binding.const1,binding.const2,binding.const3,
-            binding.const4,binding.const5,binding.const6,binding.const7,binding.const8,
-            binding.const9,binding.const10,binding.const11,binding.const12)
+        val arrayOfTextViews= arrayOf(binding.textView1,binding.textView2,binding.textView3,
+            binding.textView4,binding.textView5,binding.textView6,binding.textView7,
+            binding.textView8,binding.textView9,binding.textView10,binding.textView11,binding.textView12)
+
+
         val likedButtons= ArrayList<Button>()
         val array=ArrayList<Int>()
         var s=pref?.getString("list","")
         val listOfIndex= s?.split(",")
+        val size = pref?.getInt("array_size", 0)
+       val array2 = size?.let { arrayOfNulls<String>(it) }
+        for (i in 0 until size!!)
+            pref?.getString("array_$i", null)
 
-        if (listOfIndex != null) {
-            for (i in listOfIndex){
-                if(i!="") {
-                    var j = i.toInt()
-                    (arrayOfButtons[j] as MaterialButton).setIconTintResource(R.color.red)
-                }
+
+            for (title in favorite.arrayOfTitle){
+                 when(title){
+                     "Film 1" -> binding.button1.setIconTintResource(R.color.red)
+                     "Film 2" -> binding.button2.setIconTintResource(R.color.red)
+                     "Film 3" -> binding.button3.setIconTintResource(R.color.red)
+                     "Film 4" -> binding.button4.setIconTintResource(R.color.red)
+                     "Film 5" -> binding.button5.setIconTintResource(R.color.red)
+                     "Film 6" -> binding.button6.setIconTintResource(R.color.red)
+                     "Film 7" -> binding.button7.setIconTintResource(R.color.red)
+                     "Film 8" -> binding.button8.setIconTintResource(R.color.red)
+                     "Film 9" -> binding.button9.setIconTintResource(R.color.red)
+                     "Film 10" -> binding.button10.setIconTintResource(R.color.red)
+                     "Film 11" -> binding.button11.setIconTintResource(R.color.red)
+                     "Film 12" -> binding.button12.setIconTintResource(R.color.red)
+                 }
             }
-        }
 
         for(i in arrayOfButtons.indices){
             arrayOfButtons[i].setOnClickListener {
-                if (pref?.getString("name", "").isNullOrBlank()) {
+                if (pref.getString("name", "").isNullOrBlank()) {
                     goToProfileFragment()
                 } else {
                     (arrayOfButtons[i] as MaterialButton).setIconTintResource(R.color.red)
+                    favorite.arrayOfTitle[i]=arrayOfTextViews[i].text.toString()
+                    findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)
+
+                   /* (arrayOfButtons[i] as MaterialButton).setIconTintResource(R.color.red)
                     array.add(i)
-                    val sb = StringBuilder()
+                    val edit = pref?.edit()
+                    edit?.putInt("array_size", array.size)
+                    for (i in 0 until array.size)
+                        edit?.putString("array_$i", array[i].toString())
+                    edit?.commit()
+
+                    */
+                    /*val sb = StringBuilder()
                     sb.append(pref?.getString("list","")).append(",")
                     for (j in 0 until array.size) {
                         sb.append(array[j]).append(",")
                     }
                     pref?.edit()?.putString("list", sb.toString())
                     pref?.edit()?.apply()
-                    var bundle = bundleOf("liked" to i)
-                    findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment, bundle)
+
+                     */
+                    //var bundle = bundleOf("liked" to i)
+
                 }
             }
         }
@@ -118,8 +151,7 @@ class HomeFragment : Fragment() {
         if (pref?.getString("name","").isNullOrBlank()){
             findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
         }else {
-            var bundle = bundleOf("liked" to -1)
-            findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment,bundle)
+            findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)
         }
     }
 
