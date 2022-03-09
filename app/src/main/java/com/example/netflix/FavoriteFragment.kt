@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.example.netflix.databinding.FragmentFavoriteBinding
 
@@ -35,6 +34,9 @@ class FavoriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activity?.title="Favorites"
+
+
+
         val arrayOfTextViews= arrayOf(binding.textView1,binding.textView2,binding.textView3,
             binding.textView4,binding.textView5,binding.textView6,binding.textView7,
             binding.textView8,binding.textView9,binding.textView10,binding.textView11,binding.textView12)
@@ -49,15 +51,15 @@ class FavoriteFragment : Fragment() {
             R.drawable.avatar_8,R.drawable.avatar_9,R.drawable.avatar_10,R.drawable.avatar_11,
             R.drawable.avatar_12)
 
-
-        for (i in favorite.arrayOfTitle.indices){
-            if (favorite.arrayOfTitle[i]!=""){
-                arrayOfTextViews[favorite.count].text=favorite.arrayOfTitle[i]
-                arrayOfImagView[favorite.count].setImageResource(arrayOfPictures[i])
-                favorite.count++
+        var count=0
+        for (i in Favorite.arrayOfTitle.indices){
+            if (Favorite.arrayOfTitle[i]!=""){
+                arrayOfTextViews[count].text=Favorite.arrayOfTitle[i]
+                arrayOfImagView[count].setImageResource(arrayOfPictures[i])
+                count++
             }
         }
-        favorite.count=0
+
 
         
         
@@ -72,17 +74,7 @@ class FavoriteFragment : Fragment() {
                 arrayOfConstraintLayouts[(i.toInt()) -1].visibility=View.VISIBLE
             }
         }
-
-
          */
-
-
-
-
-
-
-
-
 
     }
 

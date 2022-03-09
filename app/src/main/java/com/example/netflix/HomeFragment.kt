@@ -6,15 +6,13 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Button
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.netflix.databinding.FragmentHomeBinding
 import com.google.android.material.button.MaterialButton
 
-object favorite{
-    val arrayOfTitle= arrayOf("","","","","","","","","","","","")
-    var count=0
+object Favorite {
+    val arrayOfTitle= Array(12){""}
 }
 
 class HomeFragment : Fragment() {
@@ -63,7 +61,7 @@ class HomeFragment : Fragment() {
             pref?.getString("array_$i", null)
 
 
-            for (title in favorite.arrayOfTitle){
+            for (title in Favorite.arrayOfTitle){
                  when(title){
                      "Film 1" -> binding.button1.setIconTintResource(R.color.red)
                      "Film 2" -> binding.button2.setIconTintResource(R.color.red)
@@ -86,7 +84,7 @@ class HomeFragment : Fragment() {
                     goToProfileFragment()
                 } else {
                     (arrayOfButtons[i] as MaterialButton).setIconTintResource(R.color.red)
-                    favorite.arrayOfTitle[i]=arrayOfTextViews[i].text.toString()
+                    Favorite.arrayOfTitle[i]=arrayOfTextViews[i].text.toString()
                     findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)
 
                    /* (arrayOfButtons[i] as MaterialButton).setIconTintResource(R.color.red)
