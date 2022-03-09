@@ -1,5 +1,6 @@
 package com.example.netflix
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.fragment.findNavController
 import com.example.netflix.databinding.FragmentComingSoonBinding
 
 
@@ -35,6 +37,7 @@ class ComingSoonFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.button1.setOnClickListener {
             shareText(binding.textView1)
         }
@@ -49,14 +52,18 @@ class ComingSoonFragment : Fragment() {
     }
 
     fun shareText(textview:TextView){
-        val sendIntent: Intent = Intent().apply {
-            action = Intent.ACTION_SEND
-            putExtra(Intent.EXTRA_TEXT, "Name of film is : ${textview.text}")
-            type = "text/plain"
+        var pref = activity?.getSharedPreferences("sha", Context.MODE_PRIVATE)
+        if (pref?.getString("name","").isNullOrBlank()){
+            findNavController().navigate(R.id.action_comingSoonFragment_to_profileFragment)
+        }else{
+            val sendIntent: Intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, "Name of film is : ${textview.text}")
+                type = "text/plain"
+            }
+            val shareIntent = Intent.createChooser(sendIntent, null)
+            startActivity(shareIntent)
         }
-
-        val shareIntent = Intent.createChooser(sendIntent, null)
-        startActivity(shareIntent)
 
     }
 }

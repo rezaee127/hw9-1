@@ -29,7 +29,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/avatar_12" />
+                app:srcCompat="@drawable/avatar_13" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button1"
@@ -81,7 +81,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/avatar_1" />
+                app:srcCompat="@drawable/avatar_14" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button2"
@@ -133,7 +133,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/avatar_11" />
+                app:srcCompat="@drawable/avatar_15" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button3"
@@ -159,7 +159,7 @@
                 android:id="@+id/textView31"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Descriptiogfghdghdfghfdghfghfghghgfhfghfghgfhdfhsdfhsfghfsghdfghfghfdgn"
+                android:text="Description"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textView3"
