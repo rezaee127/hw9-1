@@ -61,20 +61,9 @@ class HomeFragment : Fragment() {
             pref?.getString("array_$i", null)
 
 
-            for (title in Favorite.arrayOfTitle){
-                 when(title){
-                     "Film 1" -> binding.button1.setIconTintResource(R.color.red)
-                     "Film 2" -> binding.button2.setIconTintResource(R.color.red)
-                     "Film 3" -> binding.button3.setIconTintResource(R.color.red)
-                     "Film 4" -> binding.button4.setIconTintResource(R.color.red)
-                     "Film 5" -> binding.button5.setIconTintResource(R.color.red)
-                     "Film 6" -> binding.button6.setIconTintResource(R.color.red)
-                     "Film 7" -> binding.button7.setIconTintResource(R.color.red)
-                     "Film 8" -> binding.button8.setIconTintResource(R.color.red)
-                     "Film 9" -> binding.button9.setIconTintResource(R.color.red)
-                     "Film 10" -> binding.button10.setIconTintResource(R.color.red)
-                     "Film 11" -> binding.button11.setIconTintResource(R.color.red)
-                     "Film 12" -> binding.button12.setIconTintResource(R.color.red)
+            for (i in Favorite.arrayOfTitle.indices){
+                 if (Favorite.arrayOfTitle[i]!=""){
+                     (arrayOfButtons[i] as MaterialButton).setIconTintResource(R.color.red)
                  }
             }
 
