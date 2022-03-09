@@ -4,16 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FavoriteFragment">
+    tools:context=".HomeFragment">
     <LinearLayout
-        android:id="@+id/llFavoriteFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="15dp"
         android:orientation="vertical">
 
         <LinearLayout
-            android:contentDescription="invisibleView"
             android:layout_width="match_parent"
             android:layout_height="110dp"
             android:layout_weight="1"
@@ -32,17 +30,9 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/avatar_15" />
+                    app:srcCompat="@drawable/avatar_3" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button3"
-                    android:layout_width="23dp"
-                    android:layout_height="39dp"
-                    app:icon="@drawable/ic_baseline_favorite_24"
-                    app:iconGravity="top"
-                    app:iconSize="20dp"
-                    app:layout_constraintBottom_toBottomOf="@id/imageView3"
-                    app:layout_constraintEnd_toEndOf="@id/imageView3" />
+
 
                 <TextView
                     android:id="@+id/textView3"
@@ -73,17 +63,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/avatar_14" />
+                    app:srcCompat="@drawable/avatar_2" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button2"
-                    android:layout_width="23dp"
-                    android:layout_height="39dp"
-                    app:icon="@drawable/ic_baseline_favorite_24"
-                    app:iconGravity="top"
-                    app:iconSize="20dp"
-                    app:layout_constraintBottom_toBottomOf="@id/imageView2"
-                    app:layout_constraintEnd_toEndOf="@id/imageView2" />
 
                 <TextView
                     android:id="@+id/textView2"
@@ -114,17 +95,9 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/avatar_13" />
+                    app:srcCompat="@drawable/avatar_1" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button1"
-                    android:layout_width="23dp"
-                    android:layout_height="39dp"
-                    app:icon="@drawable/ic_baseline_favorite_24"
-                    app:iconGravity="top"
-                    app:iconSize="20dp"
-                    app:layout_constraintBottom_toBottomOf="@id/imageView1"
-                    app:layout_constraintEnd_toEndOf="@id/imageView1" />
+
 
                 <TextView
                     android:id="@+id/textView1"
@@ -164,17 +137,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/avatar_2" />
+                    app:srcCompat="@drawable/avatar_6" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button6"
-                    android:layout_width="23dp"
-                    android:layout_height="39dp"
-                    app:icon="@drawable/ic_baseline_favorite_24"
-                    app:iconGravity="top"
-                    app:iconSize="20dp"
-                    app:layout_constraintBottom_toBottomOf="@id/imageView6"
-                    app:layout_constraintEnd_toEndOf="@id/imageView6" />
 
                 <TextView
                     android:id="@+id/textView6"
@@ -205,17 +169,9 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/avatar_3"/>
+                    app:srcCompat="@drawable/avatar_5"/>
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button5"
-                    android:layout_width="23dp"
-                    android:layout_height="39dp"
-                    app:icon="@drawable/ic_baseline_favorite_24"
-                    app:iconGravity="top"
-                    app:iconSize="20dp"
-                    app:layout_constraintBottom_toBottomOf="@id/imageView5"
-                    app:layout_constraintEnd_toEndOf="@id/imageView5" />
+
 
                 <TextView
                     android:id="@+id/textView5"
@@ -246,17 +202,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/avatar_16" />
+                    app:srcCompat="@drawable/avatar_4" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button4"
-                    android:layout_width="23dp"
-                    android:layout_height="39dp"
-                    app:icon="@drawable/ic_baseline_favorite_24"
-                    app:iconGravity="top"
-                    app:iconSize="20dp"
-                    app:layout_constraintBottom_toBottomOf="@id/imageView4"
-                    app:layout_constraintEnd_toEndOf="@id/imageView4" />
 
                 <TextView
                     android:id="@+id/textView4"
@@ -297,17 +244,9 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@tools:sample/avatars"
-                    app:srcCompat="@drawable/avatar_4"/>
+                    app:srcCompat="@drawable/avatar_9"/>
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button9"
-                    android:layout_width="23dp"
-                    android:layout_height="39dp"
-                    app:icon="@drawable/ic_baseline_favorite_24"
-                    app:iconGravity="top"
-                    app:iconSize="20dp"
-                    app:layout_constraintBottom_toBottomOf="@id/imageView9"
-                    app:layout_constraintEnd_toEndOf="@id/imageView9" />
+
 
                 <TextView
                     android:id="@+id/textView9"
@@ -339,17 +278,9 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@tools:sample/avatars"
-                    app:srcCompat="@drawable/avatar_5"/>
+                    app:srcCompat="@drawable/avatar_8"/>
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button8"
-                    android:layout_width="23dp"
-                    android:layout_height="39dp"
-                    app:icon="@drawable/ic_baseline_favorite_24"
-                    app:iconGravity="top"
-                    app:iconSize="20dp"
-                    app:layout_constraintBottom_toBottomOf="@id/imageView8"
-                    app:layout_constraintEnd_toEndOf="@id/imageView8" />
+
 
                 <TextView
                     android:id="@+id/textView8"
@@ -382,17 +313,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@tools:sample/avatars"
-                    app:srcCompat="@drawable/avatar_6"/>
+                    app:srcCompat="@drawable/avatar_7"/>
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button7"
-                    android:layout_width="23dp"
-                    android:layout_height="39dp"
-                    app:icon="@drawable/ic_baseline_favorite_24"
-                    app:iconGravity="top"
-                    app:iconSize="20dp"
-                    app:layout_constraintBottom_toBottomOf="@id/imageView7"
-                    app:layout_constraintEnd_toEndOf="@id/imageView7" />
 
                 <TextView
                     android:id="@+id/textView7"
@@ -434,17 +356,9 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@tools:sample/avatars"
-                    app:srcCompat="@drawable/avatar_7"/>
+                    app:srcCompat="@drawable/avatar_12"/>
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button12"
-                    android:layout_width="23dp"
-                    android:layout_height="39dp"
-                    app:icon="@drawable/ic_baseline_favorite_24"
-                    app:iconGravity="top"
-                    app:iconSize="20dp"
-                    app:layout_constraintBottom_toBottomOf="@id/imageView12"
-                    app:layout_constraintEnd_toEndOf="@id/imageView12" />
+
 
                 <TextView
                     android:id="@+id/textView12"
@@ -477,17 +391,9 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@tools:sample/avatars"
-                    app:srcCompat="@drawable/avatar_8"/>
+                    app:srcCompat="@drawable/avatar_11"/>
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button11"
-                    android:layout_width="23dp"
-                    android:layout_height="39dp"
-                    app:icon="@drawable/ic_baseline_favorite_24"
-                    app:iconGravity="top"
-                    app:iconSize="20dp"
-                    app:layout_constraintBottom_toBottomOf="@id/imageView11"
-                    app:layout_constraintEnd_toEndOf="@id/imageView11" />
+
 
                 <TextView
                     android:id="@+id/textView11"
@@ -520,17 +426,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@tools:sample/avatars"
-                    app:srcCompat="@drawable/avatar_9"/>
+                    app:srcCompat="@drawable/avatar_10"/>
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button10"
-                    android:layout_width="23dp"
-                    android:layout_height="39dp"
-                    app:icon="@drawable/ic_baseline_favorite_24"
-                    app:iconGravity="top"
-                    app:iconSize="20dp"
-                    app:layout_constraintBottom_toBottomOf="@id/imageView10"
-                    app:layout_constraintEnd_toEndOf="@id/imageView10" />
 
                 <TextView
                     android:id="@+id/textView10"
