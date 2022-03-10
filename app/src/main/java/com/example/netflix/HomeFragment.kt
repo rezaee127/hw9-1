@@ -12,14 +12,12 @@ import androidx.navigation.fragment.findNavController
 import com.example.netflix.databinding.FragmentHomeBinding
 import com.google.android.material.button.MaterialButton
 
-object Favorite {
-   // val arrayOfTitle= Array(12){""}
-}
+
 
 class HomeFragment : Fragment() {
     lateinit var  binding : FragmentHomeBinding
     var arrayOfButtons=ArrayList<Button>()
-    var arrayOfConstraintLayout=ArrayList<ConstraintLayout>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,19 +48,7 @@ class HomeFragment : Fragment() {
         val arrayOfTextViews= arrayOf(binding.textView1,binding.textView2,binding.textView3,
             binding.textView4,binding.textView5,binding.textView6,binding.textView7,
             binding.textView8,binding.textView9,binding.textView10,binding.textView11,binding.textView12)
-        //var array=Array(12){""}
 
-      /*  val likedButtons= ArrayList<Button>()
-        val array=ArrayList<Int>()
-        var s=pref?.getString("list","")
-        val listOfIndex= s?.split(",")
-        val size = pref?.getInt("array_size", 0)
-       val array2 = size?.let { arrayOfNulls<String>(it) }
-        for (i in 0 until size!!)
-            pref?.getString("array_$i", null)
-
-
-       */
         val pref = requireActivity().getSharedPreferences("sha",MODE_PRIVATE)
         val array=  Array(12){""}
         val size: Int = pref.getInt("array_size", 0)
@@ -96,25 +82,7 @@ class HomeFragment : Fragment() {
 
                     findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)
 
-                   /* (arrayOfButtons[i] as MaterialButton).setIconTintResource(R.color.red)
-                    array.add(i)
-                    val edit = pref?.edit()
-                    edit?.putInt("array_size", array.size)
-                    for (i in 0 until array.size)
-                        edit?.putString("array_$i", array[i].toString())
-                    edit?.commit()
 
-                    */
-                    /*val sb = StringBuilder()
-                    sb.append(pref?.getString("list","")).append(",")
-                    for (j in 0 until array.size) {
-                        sb.append(array[j]).append(",")
-                    }
-                    pref?.edit()?.putString("list", sb.toString())
-                    pref?.edit()?.apply()
-
-                     */
-                    //var bundle = bundleOf("liked" to i)
 
                 }
             }
