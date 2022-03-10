@@ -12,7 +12,7 @@ import com.example.netflix.databinding.FragmentFavoriteBinding
 class FavoriteFragment : Fragment() {
     lateinit var  binding : FragmentFavoriteBinding
 
-    var pref = activity?.getSharedPreferences("sha", Context.MODE_PRIVATE)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -50,15 +50,24 @@ class FavoriteFragment : Fragment() {
             R.drawable.avatar_4,R.drawable.avatar_5,R.drawable.avatar_6,R.drawable.avatar_7,
             R.drawable.avatar_8,R.drawable.avatar_9,R.drawable.avatar_10,R.drawable.avatar_11,
             R.drawable.avatar_12)
+        val pref = requireActivity().getSharedPreferences("sha", Context.MODE_PRIVATE)
+        val array=  Array(12){""}
+        val size: Int = pref.getInt("array_size", 0)
 
+        if (size != 0) {
+            for (i in 0 until size)
+               array[i]= pref.getString("array_$i", null).toString()
+        }
         var count=0
-        for (i in Favorite.arrayOfTitle.indices){
-            if (Favorite.arrayOfTitle[i]!=""){
-                arrayOfTextViews[count].text=Favorite.arrayOfTitle[i]
+
+        for (i in array.indices){
+            if (array[i]!=""){
+                arrayOfTextViews[count].text=array[i]
                 arrayOfImagView[count].setImageResource(arrayOfPictures[i])
                 count++
             }
         }
+
 
 
         
