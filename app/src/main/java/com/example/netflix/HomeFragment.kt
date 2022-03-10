@@ -49,7 +49,7 @@ class HomeFragment : Fragment() {
             binding.textView4,binding.textView5,binding.textView6,binding.textView7,
             binding.textView8,binding.textView9,binding.textView10,binding.textView11,binding.textView12)
 
-        val pref = requireActivity().getSharedPreferences("sha",MODE_PRIVATE)
+        val pref = requireActivity().getSharedPreferences("share", Context.MODE_PRIVATE)
         val array=  Array(12){""}
         val size: Int = pref.getInt("array_size", 0)
 
@@ -76,20 +76,14 @@ class HomeFragment : Fragment() {
                     val edit= pref.edit()
                     edit.putInt("array_size", array.size)
                     for (j in array.indices)
-                        edit?.putString("array_$j", array[j])
-                    edit.commit()
+                        edit.putString("array_$j", array[j])
                     edit.apply()
 
                     findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)
 
-
-
                 }
             }
         }
-
-
-
     }
 
 
@@ -122,7 +116,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun goToFavoriteFragment() {
-        var pref = requireActivity().getSharedPreferences("sha",MODE_PRIVATE)
+        val pref = requireActivity().getSharedPreferences("share", Context.MODE_PRIVATE)
         if (pref.getString("name","").isNullOrBlank()){
             findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
         }else {

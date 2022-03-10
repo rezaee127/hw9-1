@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.example.netflix.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
@@ -19,9 +18,6 @@ class ProfileFragment : Fragment() {
     lateinit var binding:FragmentProfileBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
     }
 
     override fun onCreateView(
@@ -29,7 +25,6 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentProfileBinding.inflate (inflater, container, false)
-
         return binding.root
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_profile, container, false)
@@ -37,8 +32,8 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var pref = activity?.getSharedPreferences("sha",Context.MODE_PRIVATE)
-        if (pref?.getString("name","").isNullOrBlank()) {
+        val pref = requireActivity().getSharedPreferences("share", Context.MODE_PRIVATE)
+        if (pref.getString("name","").isNullOrBlank()) {
             gone1()
             binding.registerBtn.setOnClickListener {
                 if (binding.nameEtx.text.isNullOrBlank())
@@ -59,13 +54,13 @@ class ProfileFragment : Fragment() {
         email=binding.emailEtx.text.toString()
         phone=binding.phoneEtx.text.toString()
         userName=binding.userNameEtx.text.toString()
-        val pref = activity?.getSharedPreferences("sha",Context.MODE_PRIVATE)
-        val editor=pref?.edit()
-        editor?.putString("name",name)
-        editor?.putString("email",email)
-        editor?.putString("phone",phone)
-        editor?.putString("userName",userName)
-        editor?.apply()
+        val pref = requireActivity().getSharedPreferences("share", Context.MODE_PRIVATE)
+        val editor=pref.edit()
+        editor.putString("name",name)
+        editor.putString("email",email)
+        editor.putString("phone",phone)
+        editor.putString("userName",userName)
+        editor.apply()
         Toast.makeText(activity, "ذخیره اطلاعات انجام شد", Toast.LENGTH_LONG).show()
 
         viewInformation()
@@ -73,13 +68,13 @@ class ProfileFragment : Fragment() {
 
     @SuppressLint("SetTextI18n")
     private fun viewInformation() {
-        val pref = activity?.getSharedPreferences("sha",Context.MODE_PRIVATE)
+        val pref = requireActivity().getSharedPreferences("share", Context.MODE_PRIVATE)
         gone2()
         visible()
-        binding.nameTxv.text="نام : ${pref?.getString("name","")}"
-        binding.emailTxv.text="ایمیل : ${pref?.getString("email","")}"
-        binding.phoneTxv.text="تلفن : ${pref?.getString("phone","")}"
-        binding.userNameTxv.text="نام کاربری : ${pref?.getString("userName","")}"
+        binding.nameTxv.text="نام : ${pref.getString("name","")}"
+        binding.emailTxv.text="ایمیل : ${pref.getString("email","")}"
+        binding.phoneTxv.text="تلفن : ${pref.getString("phone","")}"
+        binding.userNameTxv.text="نام کاربری : ${pref.getString("userName","")}"
 
     }
 
@@ -100,7 +95,7 @@ class ProfileFragment : Fragment() {
 
 
     }
-    fun gone1(){
+    private fun gone1(){
         binding.nameTxv.visibility=View.GONE
         binding.emailTxv.visibility=View.GONE
         binding.phoneTxv.visibility=View.GONE

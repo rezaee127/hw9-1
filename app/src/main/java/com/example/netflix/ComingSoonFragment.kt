@@ -52,8 +52,8 @@ class ComingSoonFragment : Fragment() {
     }
 
     fun shareText(textview:TextView){
-        var pref = activity?.getSharedPreferences("sha", Context.MODE_PRIVATE)
-        if (pref?.getString("name","").isNullOrBlank()){
+        val pref = requireActivity().getSharedPreferences("share", Context.MODE_PRIVATE)
+        if (pref.getString("name","").isNullOrBlank()){
             findNavController().navigate(R.id.action_comingSoonFragment_to_profileFragment)
         }else{
             val sendIntent: Intent = Intent().apply {
