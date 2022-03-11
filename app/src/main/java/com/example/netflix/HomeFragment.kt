@@ -2,11 +2,8 @@ package com.example.netflix
 
 
 import android.content.Context
-import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
 import android.view.*
-import android.widget.Button
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.netflix.databinding.FragmentHomeBinding
@@ -16,8 +13,8 @@ import com.google.android.material.button.MaterialButton
 
 class HomeFragment : Fragment() {
     lateinit var  binding : FragmentHomeBinding
-    var arrayOfButtons=ArrayList<Button>()
 
+    val array=  Array(12){""}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +38,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         activity?.title="Netflix"
 
-        arrayOfButtons= arrayListOf(binding.button1,binding.button2,binding.button3,
+        val arrayOfButtons= arrayListOf(binding.button1,binding.button2,binding.button3,
             binding.button4,binding.button5,binding.button6,binding.button7,binding.button8,
             binding.button9,binding.button10,binding.button11,binding.button12)
 
@@ -50,7 +47,36 @@ class HomeFragment : Fragment() {
             binding.textView8,binding.textView9,binding.textView10,binding.textView11,binding.textView12)
 
         val pref = requireActivity().getSharedPreferences("share", Context.MODE_PRIVATE)
-        val array=  Array(12){""}
+        getArrayFromShared()
+
+        for (i in array.indices){
+            if (array[i]!=""){
+                (arrayOfButtons[i] as MaterialButton).setIconTintResource(R.color.red)
+            }
+        }
+
+        for(i in arrayOfButtons.indices){
+            arrayOfButtons[i].setOnClickListener {
+                if (pref.getString("name", "").isNullOrBlank()) {
+                    goToProfileFragment()
+                } else if(array[i]!=""){
+                        (arrayOfButtons[i] as MaterialButton).setIconTintResource(R.color.white)
+                        array[i]=""
+                        saveArrayToShared()
+                        findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)
+                    }else{
+                        (arrayOfButtons[i] as MaterialButton).setIconTintResource(R.color.red)
+                        array[i]=arrayOfTextViews[i].text.toString()
+                        saveArrayToShared()
+                        findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)
+                    }
+
+            }
+        }
+    }
+
+    private fun getArrayFromShared() {
+        val pref = requireActivity().getSharedPreferences("share", Context.MODE_PRIVATE)
         val size: Int = pref.getInt("array_size", 0)
 
         if (size != 0 ) {
@@ -58,32 +84,15 @@ class HomeFragment : Fragment() {
                 array[i]= pref.getString("array_$i", null).toString()
         }
 
+    }
 
-            for (i in array.indices){
-                 if (array[i]!=""){
-                     (arrayOfButtons[i] as MaterialButton).setIconTintResource(R.color.red)
-                 }
-            }
-
-        for(i in arrayOfButtons.indices){
-            arrayOfButtons[i].setOnClickListener {
-                if (pref.getString("name", "").isNullOrBlank()) {
-                    goToProfileFragment()
-                } else {
-                    (arrayOfButtons[i] as MaterialButton).setIconTintResource(R.color.red)
-                    array[i]=arrayOfTextViews[i].text.toString()
-
-                    val edit= pref.edit()
-                    edit.putInt("array_size", array.size)
-                    for (j in array.indices)
-                        edit.putString("array_$j", array[j])
-                    edit.apply()
-
-                    findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)
-
-                }
-            }
-        }
+    private fun saveArrayToShared() {
+        val pref = requireActivity().getSharedPreferences("share", Context.MODE_PRIVATE)
+        val edit= pref.edit()
+        edit.putInt("array_size", array.size)
+        for (j in array.indices)
+            edit.putString("array_$j", array[j])
+        edit.apply()
     }
 
 

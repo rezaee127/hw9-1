@@ -15,9 +15,6 @@ class FavoriteFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
     }
 
     override fun onCreateView(
@@ -27,7 +24,6 @@ class FavoriteFragment : Fragment() {
         binding = FragmentFavoriteBinding.inflate (inflater, container, false)
         return binding.root
 
-        // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_favorite, container, false)
     }
 
@@ -62,9 +58,8 @@ class FavoriteFragment : Fragment() {
             for (i in 0 until size)
                array[i]= pref.getString("array_$i", null).toString()
         }
+
         var count=0
-
-
         for (i in array.indices){
             if (array[i]!=""){
                 arrayOfTextViews[count].text=array[i]
