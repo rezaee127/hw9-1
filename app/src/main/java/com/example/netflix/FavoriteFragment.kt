@@ -51,7 +51,7 @@ class FavoriteFragment : Fragment() {
 
 
         val pref = requireActivity().getSharedPreferences("share", Context.MODE_PRIVATE)
-        val array=  Array(12){""}
+        val array=  Array(30){""}
         val size: Int = pref.getInt("array_size", 0)
 
         if (size != 0) {

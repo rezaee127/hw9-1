@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.netflix.Repository.arrayOfVideos
 import com.example.netflix.databinding.FragmentHomeBinding
 import com.google.android.material.button.MaterialButton
 
@@ -14,8 +15,7 @@ import com.google.android.material.button.MaterialButton
 class HomeFragment : Fragment() {
     lateinit var  binding : FragmentHomeBinding
 
-    val array=  Array(12){""}
-
+    val array=  Array(30){""}
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -40,37 +40,55 @@ class HomeFragment : Fragment() {
 
         val arrayOfButtons= arrayListOf(binding.button1,binding.button2,binding.button3,
             binding.button4,binding.button5,binding.button6,binding.button7,binding.button8,
-            binding.button9,binding.button10,binding.button11,binding.button12)
+            binding.button9,binding.button10,binding.button11,binding.button12,binding.button1,binding.button2,binding.button3,
+            binding.button4,binding.button5,binding.button6,binding.button7,binding.button8,
+            binding.button9,binding.button10,binding.button11,binding.button12,binding.button4,binding.button5,binding.button6,binding.button7,binding.button8,
+            binding.button9,binding.button10,binding.button11,)
 
-        val arrayOfTextViews= arrayOf(binding.textView1,binding.textView2,binding.textView3,
-            binding.textView4,binding.textView5,binding.textView6,binding.textView7,
-            binding.textView8,binding.textView9,binding.textView10,binding.textView11,binding.textView12)
+//        val arrayOfTextViews= arrayOf(binding.textView1,binding.textView2,binding.textView3,
+//            binding.textView4,binding.textView5,binding.textView6,binding.textView7,
+//            binding.textView8,binding.textView9,binding.textView10,binding.textView11,binding.textView12)
+
+
+
+
 
         val pref = requireActivity().getSharedPreferences("share", Context.MODE_PRIVATE)
         getArrayFromShared()
 
         for (i in array.indices){
             if (array[i]!=""){
-                (arrayOfButtons[i] as MaterialButton).setIconTintResource(R.color.red)
+                arrayOfVideos[i].isFavorite=true
+                //(arrayOfButtons[i] as MaterialButton).setIconTintResource(R.color.red)
             }
         }
+        binding.videoListRecyclerView.adapter=VideoAdapter(arrayOfVideos,{onclickButton()})
 
-        for(i in arrayOfButtons.indices){
+        for(i in arrayOfVideos.indices){
             arrayOfButtons[i].setOnClickListener {
-                if (pref.getString("name", "").isNullOrBlank()) {
-                    goToProfileFragment()
-                } else if(array[i]!=""){
-                        (arrayOfButtons[i] as MaterialButton).setIconTintResource(R.color.white)
-                        array[i]=""
-                        saveArrayToShared()
-                        findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)
-                    }else{
-                        (arrayOfButtons[i] as MaterialButton).setIconTintResource(R.color.red)
-                        array[i]=arrayOfTextViews[i].text.toString()
-                        saveArrayToShared()
-                        findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)
-                    }
+                onclickButton()
+            }
+        }
+    }
 
+    private fun onclickButton() {
+        val pref = requireActivity().getSharedPreferences("share", Context.MODE_PRIVATE)
+        for(i in arrayOfVideos.indices) {
+            if (pref.getString("name", "").isNullOrBlank()) {
+                goToProfileFragment()
+            } else if (array[i] != "") {
+                arrayOfVideos[i].isFavorite = false
+                //(arrayOfButtons[i] as MaterialButton).setIconTintResource(R.color.white)
+                array[i] = ""
+                saveArrayToShared()
+                findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)
+            } else {
+                arrayOfVideos[i].isFavorite = true
+                //(arrayOfButtons[i] as MaterialButton).setIconTintResource(R.color.red)
+                array[i] = arrayOfVideos[i].title
+                //array[i] = arrayOfTextViews[i].text.toString()
+                saveArrayToShared()
+                findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)
             }
         }
     }
