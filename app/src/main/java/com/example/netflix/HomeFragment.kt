@@ -4,17 +4,15 @@ package com.example.netflix
 import android.content.Context
 import android.os.Bundle
 import android.view.*
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.netflix.Repository.arrayOfVideos
 import com.example.netflix.databinding.FragmentHomeBinding
-import com.google.android.material.button.MaterialButton
-
 
 
 class HomeFragment : Fragment() {
     lateinit var  binding : FragmentHomeBinding
-
     val array=  Array(30){""}
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,12 +22,9 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-
+    ): View {
         binding = FragmentHomeBinding.inflate (inflater, container, false)
-
         return binding.root
-
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_home, container, false)
     }
@@ -38,25 +33,15 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         activity?.title="Netflix"
 
-
-
-
-        val pref = requireActivity().getSharedPreferences("share", Context.MODE_PRIVATE)
         getArrayFromShared()
 
         for (i in array.indices){
             if (array[i]!=""){
                 arrayOfVideos[i].isFavorite=true
-                //(arrayOfButtons[i] as MaterialButton).setIconTintResource(R.color.red)
             }
         }
-        binding.videoListRecyclerView.adapter=VideoAdapter(arrayOfVideos,{onclickButton(it)})
+        binding.homeFragmentRecyclerView.adapter=VideoAdapter(arrayOfVideos,{onclickButton(it)})
 
-//        for(i in arrayOfVideos.indices){
-//            arrayOfButtons[i].setOnClickListener {
-//                onclickButton()
-//            }
-//        }
     }
 
     private fun onclickButton(i:Int) {
@@ -66,15 +51,12 @@ class HomeFragment : Fragment() {
                 goToProfileFragment()
             } else if (array[i] != "") {
                 arrayOfVideos[i].isFavorite = false
-                //(arrayOfButtons[i] as MaterialButton).setIconTintResource(R.color.white)
                 array[i] = ""
                 saveArrayToShared()
                 findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)
             } else {
                 arrayOfVideos[i].isFavorite = true
-                //(arrayOfButtons[i] as MaterialButton).setIconTintResource(R.color.red)
-                array[i] = arrayOfVideos[i].title
-                //array[i] = arrayOfTextViews[i].text.toString()
+                array[i] = arrayOfVideos[i].id.toString()
                 saveArrayToShared()
                 findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)
             }
