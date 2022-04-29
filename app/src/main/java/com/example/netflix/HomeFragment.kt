@@ -38,18 +38,6 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         activity?.title="Netflix"
 
-        val arrayOfButtons= arrayListOf(binding.button1,binding.button2,binding.button3,
-            binding.button4,binding.button5,binding.button6,binding.button7,binding.button8,
-            binding.button9,binding.button10,binding.button11,binding.button12,binding.button1,binding.button2,binding.button3,
-            binding.button4,binding.button5,binding.button6,binding.button7,binding.button8,
-            binding.button9,binding.button10,binding.button11,binding.button12,binding.button4,binding.button5,binding.button6,binding.button7,binding.button8,
-            binding.button9,binding.button10,binding.button11,)
-
-//        val arrayOfTextViews= arrayOf(binding.textView1,binding.textView2,binding.textView3,
-//            binding.textView4,binding.textView5,binding.textView6,binding.textView7,
-//            binding.textView8,binding.textView9,binding.textView10,binding.textView11,binding.textView12)
-
-
 
 
 
@@ -62,18 +50,18 @@ class HomeFragment : Fragment() {
                 //(arrayOfButtons[i] as MaterialButton).setIconTintResource(R.color.red)
             }
         }
-        binding.videoListRecyclerView.adapter=VideoAdapter(arrayOfVideos,{onclickButton()})
+        binding.videoListRecyclerView.adapter=VideoAdapter(arrayOfVideos,{onclickButton(it)})
 
-        for(i in arrayOfVideos.indices){
-            arrayOfButtons[i].setOnClickListener {
-                onclickButton()
-            }
-        }
+//        for(i in arrayOfVideos.indices){
+//            arrayOfButtons[i].setOnClickListener {
+//                onclickButton()
+//            }
+//        }
     }
 
-    private fun onclickButton() {
+    private fun onclickButton(i:Int) {
         val pref = requireActivity().getSharedPreferences("share", Context.MODE_PRIVATE)
-        for(i in arrayOfVideos.indices) {
+
             if (pref.getString("name", "").isNullOrBlank()) {
                 goToProfileFragment()
             } else if (array[i] != "") {
@@ -90,7 +78,6 @@ class HomeFragment : Fragment() {
                 saveArrayToShared()
                 findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)
             }
-        }
     }
 
     private fun getArrayFromShared() {

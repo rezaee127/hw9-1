@@ -9,14 +9,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 
-class VideoAdapter(var dataSet: ArrayList<Video>, val onClickButtonFavorite:()->Unit) : RecyclerView.Adapter<VideoAdapter.ViewHolder>() {
+class VideoAdapter(var dataSet: ArrayList<Video>, val onClickButtonFavorite:(Int)->Unit) : RecyclerView.Adapter<VideoAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var textViewTitle=view.findViewById<TextView>(R.id.textViewTitle)
         var buttonFavorite=view.findViewById<Button>(R.id.buttonFavorite)
         var videoImagView=view.findViewById<ImageView>(R.id.imageView)
 
-        fun bind(video:Video,onClickButtonFavorite:()->Unit){
+        fun bind(video:Video,onClickButtonFavorite:(Int)->Unit){
             textViewTitle.text=video.title
             videoImagView.setImageResource(video.imageView)
             if (video.isFavorite)
@@ -24,7 +24,7 @@ class VideoAdapter(var dataSet: ArrayList<Video>, val onClickButtonFavorite:()->
             else
                 (buttonFavorite as MaterialButton).setIconTintResource(R.color.white)
             buttonFavorite.setOnClickListener {
-                onClickButtonFavorite()
+                onClickButtonFavorite(video.id)
             }
         }
 

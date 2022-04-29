@@ -27,8 +27,9 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonFavorite"
-        android:layout_width="23dp"
-        android:layout_height="39dp"
+        android:layout_width="33dp"
+        android:layout_height="37dp"
+        android:layout_marginEnd="60dp"
         app:icon="@drawable/ic_baseline_favorite_24"
         app:iconGravity="top"
         app:iconSize="20dp"
