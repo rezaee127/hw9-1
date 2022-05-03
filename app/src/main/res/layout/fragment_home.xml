@@ -22,15 +22,25 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="77dp"
-                android:layout_height="74dp"
+<!--            <ImageView-->
+<!--                android:id="@+id/imageView3"-->
+<!--                android:layout_width="77dp"-->
+<!--                android:layout_height="74dp"-->
+<!--                android:layout_marginTop="12dp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:srcCompat="@drawable/avatar_3" />-->
+
+            <com.google.android.exoplayer2.ui.PlayerView
+                android:id="@+id/videoView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/avatar_3" />
+                app:srcCompat="@drawable/avatar_3"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button3"
@@ -39,8 +49,8 @@
                 app:icon="@drawable/ic_baseline_favorite_24"
                 app:iconGravity="top"
                 app:iconSize="20dp"
-                app:layout_constraintBottom_toBottomOf="@id/imageView3"
-                app:layout_constraintEnd_toEndOf="@id/imageView3" />
+                app:layout_constraintBottom_toBottomOf="@id/videoView"
+                app:layout_constraintEnd_toEndOf="@id/videoView" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -48,7 +58,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imageView3"
+                app:layout_constraintTop_toBottomOf="@id/videoView"
                 android:text="Film 3"
                 tools:layout_editor_absoluteX="171dp"
                 tools:layout_editor_absoluteY="78dp" />

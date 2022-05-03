@@ -7,6 +7,9 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.netflix.databinding.FragmentHomeBinding
+import com.google.android.exoplayer2.ExoPlayer
+import com.google.android.exoplayer2.MediaItem
+import com.google.android.exoplayer2.util.Util
 import com.google.android.material.button.MaterialButton
 
 
@@ -138,6 +141,79 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_homeFragment_to_comingSoonFragment)
         }
 
+
+
+
+
+
+
+    private var player: ExoPlayer? = null
+    private var playWhenReady = true
+    private var currentWindow = 0
+    private var playbackPosition = 0L
+
+    private fun releasePlayer() {
+        player?.run {
+            playbackPosition = this.currentPosition
+            currentWindow = this.currentWindowIndex
+            playWhenReady = this.playWhenReady
+            release()
+        }
+        player = null
+    }
+
+
+    private fun initializePlayer() {
+        player = ExoPlayer.Builder(requireContext())
+            .build()
+            .also { exoPlayer ->
+                binding.videoView.player = exoPlayer
+                val mediaItem = MediaItem.fromUri(getString(R.string.video1))
+                exoPlayer.setMediaItem(mediaItem)
+                exoPlayer.playWhenReady = playWhenReady
+                exoPlayer.seekTo(currentWindow, playbackPosition)
+                exoPlayer.prepare()
+            }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (Util.SDK_INT >= 24) {
+            initializePlayer()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        //hideSystemUi()
+        if ((Util.SDK_INT < 24 || player == null)) {
+            initializePlayer()
+        }
+    }
+
+    private fun hideSystemUi() {
+        binding.videoView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LOW_PROFILE
+                or View.SYSTEM_UI_FLAG_FULLSCREEN
+                or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (Util.SDK_INT < 24) {
+            releasePlayer()
+        }
+    }
+
+
+    override fun onStop() {
+        super.onStop()
+        if (Util.SDK_INT >= 24) {
+            releasePlayer()
+        }
+    }
 
 
 }
